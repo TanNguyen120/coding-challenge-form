@@ -58,7 +58,7 @@ const FormStage = () => {
           Kostenloser Solarstrom-Check in einer Minute.
         </div>
         <AnimatePresence>
-          {formStage == 1 && (
+          {formStage === 1 && (
             <motion.div
               variants={slidingAnimation}
               key={1}
@@ -86,7 +86,6 @@ const FormStage = () => {
                   className='flex justify-between w-fit h-fit hover:cursor-pointer  mr-2 ml-auto bg-blue-500 text-white px-3 py-2 rounded-lg mt-3'
                   onClick={() => {
                     setIsBack(false);
-                    setAnimateFlagIsBack(false);
                     setFormStage((prev) => prev + 1);
                   }}
                 >
@@ -103,9 +102,9 @@ const FormStage = () => {
             </motion.div>
           )}
 
-          {formStage == 2 && (
+          {formStage === 2 && (
             <motion.div
-              custom={animateFlagIsBack}
+              custom={isBack}
               key={2}
               animate={'show'}
               exit={'gone'}
@@ -128,7 +127,6 @@ const FormStage = () => {
                     className='flex justify-between w-fit h-fit py-[1.45px] hover:cursor-pointer'
                     onClick={async () => {
                       setIsBack(true);
-                      setAnimateFlagIsBack(true);
                       setFormStage(1);
                     }}
                   >
@@ -148,7 +146,6 @@ const FormStage = () => {
                     className='flex justify-between w-fit h-fit hover:cursor-pointer  mr-2 ml-auto bg-blue-500 text-white px-3 py-2 rounded-lg mt-3'
                     onClick={async () => {
                       setIsBack(false);
-                      setAnimateFlagIsBack(true);
                       setFormStage((prev) => prev + 1);
                     }}
                   >
@@ -167,7 +164,7 @@ const FormStage = () => {
               </div>
             </motion.div>
           )}
-          {formStage == 3 && (
+          {formStage === 3 && (
             <motion.div
               variants={slidingAnimation}
               key={3}
