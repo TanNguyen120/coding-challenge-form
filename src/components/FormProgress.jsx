@@ -9,31 +9,31 @@ const FormProgress = () => {
   // animate value based on percent
   const [x, setX] = useState(-2);
   const [width, setWidth] = useState(0);
-  const [lastX, setLastX] = useState(-2);
+  const [lastX, setLastX] = useState(0);
   const [lastWidth, setLastWidth] = useState(0);
   const [percent, setPercent] = useState(0);
   useEffect(() => {
     if (!isBack) {
       switch (formStage) {
         case 1:
-          setWidth(6);
-          setX(4);
-          setLastX(-2);
+          setWidth(10);
+          setX(10);
+          setLastX(0);
           setLastWidth(0);
           setPercent(10);
           break;
         case 2:
-          setWidth(26.188);
-          setX(24.188);
-          setLastX(4);
-          setLastWidth(6);
+          setWidth(50);
+          setX(50);
+          setLastX(10);
+          setLastWidth(10);
           setPercent(50);
           break;
         case 3:
-          setWidth(45.519);
-          setX(43.519);
-          setLastX(24.188);
-          setLastWidth(26.188);
+          setWidth(90);
+          setX(90);
+          setLastX(50);
+          setLastWidth(50);
           setPercent(95);
           break;
         default:
@@ -42,21 +42,20 @@ const FormProgress = () => {
     } else {
       switch (formStage) {
         case 1:
-          setWidth(6);
-          setX(4);
-          setLastX(24.188);
-          setLastWidth(26.188);
+          setWidth(10);
+          setX(10);
+          setLastX(50);
+          setLastWidth(50);
           setPercent(10);
           break;
         case 2:
-          setWidth(26.188);
-          setX(24.188);
-          setLastX(43.519);
-          setLastWidth(45.519);
+          setWidth(50);
+          setX(50);
+          setLastX(90);
+          setLastWidth(90);
           setPercent(50);
           break;
         case 3:
-
         default:
           break;
       }
@@ -78,30 +77,32 @@ const FormProgress = () => {
               transition: { duration: 0.3, delay: 0.3 },
             }
       }
-      className={` flex flex-col pl-4 py-2 w-full`}
+      className={` flex flex-col py-2 px-6 md:px-0 pl-4 w-full`}
     >
       <motion.div
         key={lastX}
-        initial={{ x: `${lastX}rem` }}
-        animate={{ x: `${x}rem` }}
+        initial={{ width: `${lastX}%` }}
+        animate={{ width: `${x}%` }}
         transition={{ duration: 1, delay: 0.3, type: 'tween' }}
-        className='relative flex flex-col items-center w-fit '
+        className='z-40 '
       >
-        <div className='  text-xs pb-2  text-center'>
-          {percent}% {percent == 90 && 'Fast'} geschafft
-        </div>
-        <div className=' absolute -bottom-5 z-10  '>
-          <Image width={20} height={20} src={`/GroupCheck.png`} alt='svg' />
+        <div className=' w-fit -mr-10 ml-auto relative flex flex-col items-center'>
+          <div className='  text-xs pb-2  text-center'>
+            {percent}% {percent == 90 && 'Fast'} geschafft
+          </div>
+          <div className=' absolute -bottom-5 z-10  '>
+            <Image width={20} height={20} src={`/GroupCheck.png`} alt='svg' />
+          </div>
         </div>
       </motion.div>
-      <div className='relative py-2'>
-        <div className=' w-full md:w-[52.125rem] h-1 bg-[#64D59F] opacity-25'></div>
+      <div className='relative py-2 w-full'>
+        <div className=' w-full  h-1 bg-[#64D59F] opacity-25'></div>
         <motion.div
           key={lastWidth}
-          initial={{ width: `${lastWidth}rem` }}
-          animate={{ width: `${width}rem` }}
+          initial={{ width: `${lastWidth}%` }}
+          animate={{ width: `${width}%` }}
           transition={{ duration: 1, delay: 0.3, type: 'tween' }}
-          className=' absolute z-10 top-2 w-24 h-1 bg-[#64D59F]'
+          className=' absolute z-10 top-2 h-1 bg-[#64D59F]'
         ></motion.div>
       </div>
     </motion.div>

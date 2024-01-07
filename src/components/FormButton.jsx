@@ -73,7 +73,7 @@ const btnIconLabelMotion = {
 };
 
 const FormButton = ({ imgSrc, labelName }) => {
-  const { formData, setFormData, setFormStage, formStage, setIsBack } =
+  const { formData, setFormData, setFormStage, formStage, isBack, setIsBack } =
     useContext(FormContext);
   const [chosenValue, setChosenValue] = useState('');
   // Get the current form value by switch case
@@ -96,11 +96,12 @@ const FormButton = ({ imgSrc, labelName }) => {
         break;
       case 2:
         setFormData({ ...formData, dachFenster: label });
+
       default:
         break;
     }
-    setFormStage((prev) => prev + 1);
     setIsBack(false);
+    setFormStage((prev) => prev + 1);
   };
 
   return (
