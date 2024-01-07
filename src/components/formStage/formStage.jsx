@@ -32,7 +32,6 @@ const middleSlide = {
     };
   },
   gone: (isBack) => {
-    console.log('ANIMATE IS BACK: ' + isBack);
     return {
       x: isBack ? -300 : 300,
       z: 0,
@@ -45,7 +44,6 @@ const middleSlide = {
 const FormStage = () => {
   const { formStage, setFormStage, formData, isBack, setIsBack } =
     useContext(FormContext);
-  const [animateFlagIsBack, setAnimateFlagIsBack] = useState();
 
   return (
     <AnimatePresence mode='wait' initial={false}>
@@ -58,7 +56,7 @@ const FormStage = () => {
           Kostenloser Solarstrom-Check in einer Minute.
         </div>
         <AnimatePresence>
-          {formStage === 1 && (
+          {formStage == 1 && (
             <motion.div
               variants={slidingAnimation}
               key={1}
@@ -102,7 +100,7 @@ const FormStage = () => {
             </motion.div>
           )}
 
-          {formStage === 2 && (
+          {formStage == 2 && (
             <motion.div
               custom={isBack}
               key={2}
@@ -127,7 +125,7 @@ const FormStage = () => {
                     className='flex justify-between w-fit h-fit py-[1.45px] hover:cursor-pointer'
                     onClick={async () => {
                       setIsBack(true);
-                      setFormStage(1);
+                      setFormStage((prev) => prev - 1);
                     }}
                   >
                     <Image
@@ -164,7 +162,7 @@ const FormStage = () => {
               </div>
             </motion.div>
           )}
-          {formStage === 3 && (
+          {formStage == 3 && (
             <motion.div
               variants={slidingAnimation}
               key={3}

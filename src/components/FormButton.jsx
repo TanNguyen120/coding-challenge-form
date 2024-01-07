@@ -96,7 +96,6 @@ const FormButton = ({ imgSrc, labelName }) => {
         break;
       case 2:
         setFormData({ ...formData, dachFenster: label });
-
       default:
         break;
     }

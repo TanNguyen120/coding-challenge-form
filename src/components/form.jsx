@@ -10,7 +10,7 @@ export const FormContext = createContext();
 function Form() {
   const [formData, setFormData] = useState({});
   const [formStage, setFormStage] = useState(1);
-  const [isBack, setIsBack] = useState();
+  const [isBack, setIsBack] = useState(false);
 
   return (
     <FormContext.Provider
